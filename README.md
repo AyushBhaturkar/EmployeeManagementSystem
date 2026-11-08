@@ -1,8 +1,42 @@
-# Employee Management System
+<div align="center">
 
-A RESTful backend application built with **Java, Spring Boot, Spring Data JPA and MySQL** for managing employee records. The project follows a layered architecture (Controller → Service → Repository) and includes request validation, centralized exception handling and interactive API documentation with Swagger UI.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,20&height=220&section=header&text=Employee%20Management%20System&fontSize=40&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=Spring%20Boot%20REST%20API&descAlignY=58&descSize=20" alt="Employee Management System banner" />
 
-## Tech Stack
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=6DB33F&center=true&vCenter=true&width=640&lines=Java+%7C+Spring+Boot+%7C+Spring+Data+JPA+%7C+MySQL;Layered+Architecture%3A+Controller+%E2%86%92+Service+%E2%86%92+Repository;Validation+%2B+Global+Exception+Handling;Interactive+API+Docs+with+Swagger+UI" alt="Typing SVG" /></a>
+
+<br/>
+
+![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+![Hibernate](https://img.shields.io/badge/Hibernate%20JPA-59666C?style=for-the-badge&logo=hibernate&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
+
+</div>
+
+---
+
+## 📌 About The Project
+
+A RESTful backend application for managing employee records, built with **Java, Spring Boot, Spring Data JPA and MySQL**. It follows a clean layered architecture and includes request validation, centralized exception handling and interactive API documentation through Swagger UI.
+
+## ✨ Features
+
+- ✅ Create, read, update and delete employees (full CRUD)
+- 🔍 Filter employees by department (case-insensitive)
+- 🛡️ Request validation: required fields, valid email, positive salary
+- 📧 Duplicate email detection with a clear error message
+- ⚠️ Centralized error handling using `@RestControllerAdvice`
+- 📖 Interactive API documentation and testing with Swagger UI
+
+## 🛠️ Tech Stack
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=java,spring,hibernate,mysql,maven,git,github,idea,postman&theme=dark" alt="Tech stack icons" />
+
+</div>
 
 | Layer | Technology |
 |-------|------------|
@@ -14,30 +48,24 @@ A RESTful backend application built with **Java, Spring Boot, Spring Data JPA an
 | API Docs | Swagger UI (springdoc-openapi) |
 | Build Tool | Maven |
 
-## Features
+## 🏗️ Architecture
 
-- Create, read, update and delete employee records (CRUD)
-- Filter employees by department (case-insensitive)
-- Request body validation (required fields, valid email, positive salary)
-- Duplicate email check with a meaningful error response
-- Centralized error handling using `@RestControllerAdvice`
-- Interactive API documentation and testing through Swagger UI
-
-## Architecture
-
-```
-Client (Swagger UI / Postman)
-        |
-   Controller   -> handles HTTP requests and responses
-        |
-    Service     -> business logic and rules
-        |
-   Repository   -> Spring Data JPA interface
-        |
-      MySQL
+```mermaid
+flowchart LR
+    A[Client<br/>Swagger UI / Postman] --> B[Controller]
+    B --> C[Service]
+    C --> D[Repository]
+    D --> E[(MySQL)]
 ```
 
-## Project Structure
+| Layer | Responsibility |
+|-------|----------------|
+| Controller | Handles HTTP requests and responses |
+| Service | Business logic and rules |
+| Repository | Database access through Spring Data JPA |
+| Exception | Converts errors into clean JSON responses |
+
+## 📂 Project Structure
 
 ```
 src/main/java/com/ayush/ems
@@ -55,20 +83,20 @@ src/main/java/com/ayush/ems
     └── GlobalExceptionHandler.java
 ```
 
-## API Endpoints
+## 🔗 API Endpoints
 
 Base URL: `http://localhost:8080/api/employees`
 
 | Method | Endpoint | Description | Success |
-|--------|----------|-------------|---------|
-| POST | `/api/employees` | Create a new employee | 201 Created |
-| GET | `/api/employees` | Get all employees | 200 OK |
-| GET | `/api/employees?department=IT` | Filter employees by department | 200 OK |
-| GET | `/api/employees/{id}` | Get an employee by id | 200 OK |
-| PUT | `/api/employees/{id}` | Update an employee | 200 OK |
-| DELETE | `/api/employees/{id}` | Delete an employee | 204 No Content |
+|:------:|----------|-------------|:-------:|
+| ![POST](https://img.shields.io/badge/POST-49CC90?style=flat-square) | `/api/employees` | Create a new employee | `201` |
+| ![GET](https://img.shields.io/badge/GET-61AFFE?style=flat-square) | `/api/employees` | Get all employees | `200` |
+| ![GET](https://img.shields.io/badge/GET-61AFFE?style=flat-square) | `/api/employees?department=IT` | Filter by department | `200` |
+| ![GET](https://img.shields.io/badge/GET-61AFFE?style=flat-square) | `/api/employees/{id}` | Get an employee by id | `200` |
+| ![PUT](https://img.shields.io/badge/PUT-FCA130?style=flat-square) | `/api/employees/{id}` | Update an employee | `200` |
+| ![DELETE](https://img.shields.io/badge/DELETE-F93E3E?style=flat-square) | `/api/employees/{id}` | Delete an employee | `204` |
 
-### Sample Request
+### 📨 Sample Request
 
 `POST /api/employees`
 
@@ -81,7 +109,7 @@ Base URL: `http://localhost:8080/api/employees`
 }
 ```
 
-### Sample Response (201 Created)
+### 📬 Sample Response `201 Created`
 
 ```json
 {
@@ -93,9 +121,12 @@ Base URL: `http://localhost:8080/api/employees`
 }
 ```
 
-### Error Responses
+<details>
+<summary><b>❌ Error response examples (click to expand)</b></summary>
 
-Employee not found (`GET /api/employees/99`) returns **404**:
+<br/>
+
+**Employee not found** — `GET /api/employees/99` returns `404`
 
 ```json
 {
@@ -105,7 +136,7 @@ Employee not found (`GET /api/employees/99`) returns **404**:
 }
 ```
 
-Duplicate email returns **400**:
+**Duplicate email** — returns `400`
 
 ```json
 {
@@ -115,7 +146,7 @@ Duplicate email returns **400**:
 }
 ```
 
-Validation failure (for example an invalid email or negative salary) returns **400**:
+**Validation failure** (invalid email or negative salary) — returns `400`
 
 ```json
 {
@@ -128,7 +159,9 @@ Validation failure (for example an invalid email or negative salary) returns **4
 }
 ```
 
-## Getting Started
+</details>
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -138,57 +171,65 @@ Validation failure (for example an invalid email or negative salary) returns **4
 
 ### Run Locally
 
-1. Clone the repository
+**1. Clone the repository**
 
-   ```bash
-   git clone https://github.com/AyushBhaturkar/EmployeeManagementSystem.git
-   cd EmployeeManagementSystem
-   ```
+```bash
+git clone https://github.com/AyushBhaturkar/EmployeeManagementSystem.git
+cd EmployeeManagementSystem
+```
 
-2. Configure the database in `src/main/resources/application.properties`
+**2. Configure the database** in `src/main/resources/application.properties`
 
-   ```properties
-   spring.datasource.url=jdbc:mysql://localhost:3306/ems_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-   spring.datasource.username=root
-   spring.datasource.password=YOUR_MYSQL_PASSWORD
-   ```
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/ems_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=YOUR_MYSQL_PASSWORD
+```
 
-   The `ems_db` database and the `employees` table are created automatically on the first run.
+> The `ems_db` database and the `employees` table are created automatically on the first run.
 
-3. Start the application
+**3. Start the application**
 
-   ```bash
-   mvn spring-boot:run
-   ```
+```bash
+mvn spring-boot:run
+```
 
-   Or run `EmployeeManagementApplication` from your IDE.
+Or run `EmployeeManagementApplication` from your IDE.
 
-4. Open Swagger UI to explore and test the APIs
+**4. Open Swagger UI** to explore and test the APIs
 
-   ```
-   http://localhost:8080/swagger-ui.html
-   ```
+```
+http://localhost:8080/swagger-ui.html
+```
 
-## Key Concepts Used
+## 💡 Key Concepts Used
 
-- **Layered architecture** to separate HTTP handling, business logic and data access
-- **Spring Data JPA** derived queries such as `findByDepartmentIgnoreCase`
-- **Bean Validation** with `@NotBlank`, `@Email` and `@Positive`
-- **Global exception handling** with `@RestControllerAdvice` and `@ExceptionHandler`
-- **Constructor-based dependency injection**
-- **Proper HTTP status codes** (201, 204, 400, 404)
+- Layered architecture to separate HTTP handling, business logic and data access
+- Spring Data JPA derived queries such as `findByDepartmentIgnoreCase`
+- Bean Validation with `@NotBlank`, `@Email` and `@Positive`
+- Global exception handling with `@RestControllerAdvice` and `@ExceptionHandler`
+- Constructor-based dependency injection
+- Correct HTTP status codes (201, 204, 400, 404)
 
-## Future Improvements
+## 🔮 Future Improvements
 
-- Authentication and authorization with Spring Security and JWT
-- Pagination and sorting for the employee list
-- DTOs instead of exposing the entity directly
-- Unit and integration tests with JUnit and Mockito
-- Docker support and cloud deployment
+- [ ] Authentication and authorization with Spring Security and JWT
+- [ ] Pagination and sorting for the employee list
+- [ ] DTOs instead of exposing the entity directly
+- [ ] Unit and integration tests with JUnit and Mockito
+- [ ] Docker support and cloud deployment
 
-## Author
+## 👨‍💻 Author
+
+<div align="center">
 
 **Ayush Bhaturkar**
-B.Tech (Data Science), G.H. Raisoni College of Engineering, Nagpur
+B.Tech (Data Science) · G.H. Raisoni College of Engineering, Nagpur
 
-[GitHub](https://github.com/AyushBhaturkar) | [LinkedIn](https://www.linkedin.com/in/ayushbhaturkar/) | bhaturkar.ayush@gmail.com
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AyushBhaturkar)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ayushbhaturkar/)
+[![Gmail](https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:bhaturkar.ayush@gmail.com)
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,20&height=120&section=footer" alt="footer" />
+
+</div>
